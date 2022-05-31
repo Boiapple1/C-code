@@ -55,9 +55,47 @@ public:
 		else
 			std::cout << Name << ", sorry No promotion for you!!" << std::endl;
 	}
+	virtual void Work() {
+		std::cout << Name << " is checking email, task backlog, performing tasks... " << std::endl;
+	}
+	void Work1() {
+		std::cout << Name << " is checking email, task backlog, performing tasks... " << std::endl;
+	}
 protected:
 
 
+};
+//inheritance
+class Developer :public Employee {
+public:
+	string FavProgrammingLanguage;
+	Developer(string name, string company, int age, string favProgrammingLanguage)
+		:Employee(name,company, age)
+	{
+		FavProgrammingLanguage = favProgrammingLanguage;
+	}
+	void FixBug() {
+		std::cout << getName() << " Fix bug using " << FavProgrammingLanguage << std::endl;
+	}
+	void Work() {
+		std::cout << getName() << " is checking email, writing code, and debug code... " << std::endl;
+	}
+};
+//inheritance
+class Teacher :public Employee {
+public:
+	string Subject;
+	void PrepareLesson() {
+		std::cout << getName() << " is preparing " << Subject << " Lesson" << std::endl;
+	}
+	Teacher(string name, string company, int age, string subject)
+		:Employee(name, company,age)
+	{
+		Subject = subject;
+	}
+	void Work() {
+		std::cout << getName() << " is checking email and teaching, performing tasks... " << std::endl;
+	}
 };
 int main() 
 {
@@ -68,6 +106,23 @@ int main()
 	std::cout << employee2.getName() << " is " << employee2.getAge() << " years old"<< std::endl;
 	employee2.IntroduceYourself();
 	employee2.AskForPromotion();
+	Developer d = Developer("Daniel", "Roboti", 25, "C++");
+	d.FixBug();
+	d.AskForPromotion();
+	Teacher t = Teacher("Jose", "Morton Ranch High School", 34, "History");
+	t.PrepareLesson();
+	t.AskForPromotion();
+	d.Work();
+	t.Work();
+	//polymorphism is when a parent class refence is used to a child class object
+	Employee* e1 = &d;
+	Employee* e2 = &t;
+
+	e1->Work();
+	e2->Work();
+	e1->Work1();
+	e2->Work1();
+
 	//without contructor
 	//Employee employee1;
 	//employee1.Name = "Mark";
