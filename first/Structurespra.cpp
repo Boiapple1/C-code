@@ -1,45 +1,59 @@
 #include <iostream>
+#include <string>
+#include <list>
 using namespace std;
 
-struct Smartphone {
-	string name;
-	int storageSpace;
-	string color;
-	float price;
+struct YoutubeChannel {
+	string Name;
+	int SubcribersCount;
 
+	YoutubeChannel(string name, int subcriberscount) {
+		Name = name;
+		SubcribersCount = subcriberscount;
+
+	}
+	bool operator==(const YoutubeChannel& channel) const{
+		return this->Name == channel.Name;
+	}
 };
+//overload
+//global function
+ostream& operator<<(ostream& COUT, YoutubeChannel& ytChannel) {
+	COUT << "Name: " << ytChannel.Name << endl;
+	COUT << "Subscribers: " << ytChannel.SubcribersCount << endl;
+	return COUT;
+}
 
-void printSmartphoneInfo(Smartphone smartphone) {
-	cout << "name: " << smartphone.name << endl;
-	cout << "storageSpace: " << smartphone.storageSpace << endl;
-	cout << "color: " << smartphone.color << endl;
-	cout << "price: " << smartphone.price << endl;
+struct MyCollection {
+	list<YoutubeChannel>myChannels;
+	//member function
+	void operator +=(YoutubeChannel& channel) {
+		this->myChannels.push_back(channel);
 
+	}
+	void operator -=(YoutubeChannel& channel) {
+		this->myChannels.remove(channel);
+
+	}
+};
+ostream& operator<<(ostream& COUT, MyCollection& myCollection) {
+	for (YoutubeChannel ytChannel : myCollection.myChannels)
+		COUT << ytChannel << endl;
+	return COUT;
 }
 
 int main()
 {
-	string name = "Iphone 12";
-	int storageSpace = 32;
-	string color = "black";
-	float price = 999.99;
-
-	string name2 = "Samsung Galaxy s21 Ultra";
-	int storageSpace2 = 64;
-	string color2 = "gray";
-	float price2 = 888.88;
-
-	Smartphone smartphone;
-	smartphone.name = "iphone 13";
-	smartphone.storageSpace = 64;
-	smartphone.color = "blue";
-	smartphone.price = 1999.99;
-
-	cout << "name: " << smartphone.name << endl;
-	cout << "storageSpace: " << smartphone.storageSpace << endl;
-	cout << "color: " << smartphone.color << endl;
-	cout << "price: " << smartphone.price << endl;
-
-	printSmartphoneInfo(smartphone);
-	system("pause>0");
+	YoutubeChannel yt1 = YoutubeChannel("CodeBeauty", 75000);
+	YoutubeChannel yt2 = YoutubeChannel("Second Channel", 790000);
+	cout << yt1;
+	cout << yt2<<"\n"<<endl;
+	//operator<<(cout, yt1);
+	MyCollection myCollection;
+	myCollection += yt1;
+	myCollection += yt2;
+	cout << myCollection;
+	myCollection -= yt2;
+	cout << myCollection;
+	cin.get();
 }
