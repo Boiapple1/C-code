@@ -1,1 +1,0 @@
-Educative C++ for Programmers
