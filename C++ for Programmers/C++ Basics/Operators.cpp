@@ -64,4 +64,65 @@ int main() {
 	cout << " Is operand1 equal to operand2? " << (operand1 == operand2) << endl;
 	cout << " Is operand1 not equal to operand2? " << (operand1 != operand2) << endl;
 
+	/*Logical operators are either used to combine two or more boolean operands or to negate the 
+	result of the original boolean operand.*/
+
+	bool operand1 = 2 > 3;
+	bool operand2 = true;
+	cout << "Values of operands are:";
+
+	cout << "operand1 = " << operand1 << " , operand2 = " << operand2 << endl;
+	cout << "operand1 && operand2 = " << (operand1 && operand2) << endl;
+	cout << "operand1 || operand2 = " << (operand1 || operand2) << endl;
+	cout << "!operand1 = " << (!operand1) << endl;
+	cout << "!operand2 = " << (!operand2) << endl;
+
+	//A bitwise operator performs bit by bit processing on the operands.
+
+	int operand1 = 3;
+	int operand2 = 2;
+	cout << "operand1 = " << operand1 << " , operand2 = " << operand2 << endl;
+	cout << "operand1 & operand2 = " << (operand1 & operand2) << endl;
+	cout << "operand1 | operand2 = " << (operand1 | operand2) << endl;
+	cout << "operand1 ^ operand2 = " << (operand1 ^ operand2) << endl;
+
+	int operand1 = 2;
+	int operand2 = 1;
+
+	cout << "operand1 >> operand2 = " << (operand1 >> operand2) << endl;
+	cout << "operand1 << operand2 = " << (operand1 << operand2) << endl;
+	
+	//Precedence and Associativity
+	// precedence determines the order in which the operators should be evaluated.
+
+	cout << 4 - (8 + 10) * 3;
+
+	//Associativity determines the order in which the operators 
+	// with the same precedence should be evaluated.
+	//
+	cout << 4 - 8 + 10 + 3;
+
+	//challenge
+	// Initialize a variable total_seconds
+	int total_seconds = 3870;
+	// Prints value of total_seconds
+	cout << "total_seconds = " << total_seconds << endl;
+	// Declares variable
+	int hours, minutes, seconds;
+	// Convert seconds in hours and store the output in hours variable
+	hours = total_seconds / 3600;
+	cout << "Time in hours, minutes and seconds = ";
+	// Prints value of hours
+	cout << hours << "h :";
+	// Store the remaining seconds in total_seconds
+	total_seconds = total_seconds % 3600;
+	// Convert seconds in minutes and store the output in minutes variable
+	minutes = total_seconds / 60;
+	// Prints value of minutes
+	cout << minutes << "m :";
+	// Store the remaining seconds in seconds variable
+	seconds = total_seconds % 60;
+	cout << seconds << "s";
+
+
 }
