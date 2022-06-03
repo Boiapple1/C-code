@@ -41,7 +41,27 @@ int main() {
 	// Returns remainder of operand1 and operand2; and print it
 	//cout << "Modulus = " << operand1 % operand2 << endl;
 	
+	//The compound assignment operator is used to perform an operation and then 
+	//assign the result to the operand on the left-hand side.
+	
+	int operand1 = 50;
+	int operand2 = 26;
+	cout << "Before using compound assignment operator:" << endl;
+	cout << "operand1 = " << operand1 << endl;
+	operand1 += operand2;
+	cout << "After using compound assignment operator:" << endl;
+	cout << "operand1 += operand2 = " << operand1 << endl;
 
+	//A relational operator compares the value of two operands.
 
+	int operand1 = 50;
+	int operand2 = 26;
+	cout << " operand1 = " << operand1 << " , operand2 = " << operand2 << endl;
+	cout << " Is operand1 less than operand2? " << (operand1 < operand2) << endl;
+	cout << " Is operand1 less than or equal to operand2? " << (operand1 <= operand2) << endl;
+	cout << " Is operand1 greater than operand2? " << (operand1 > operand2) << endl;
+	cout << " Is operand1 greater than or equal to operand2? " << (operand1 >= operand2) << endl;
+	cout << " Is operand1 equal to operand2? " << (operand1 == operand2) << endl;
+	cout << " Is operand1 not equal to operand2? " << (operand1 != operand2) << endl;
 
 }
