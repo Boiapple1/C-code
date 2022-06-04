@@ -104,6 +104,78 @@ int main() {
 
         cout << "not an alphabet";
     }
+    
+    //challege 2
 
+    int number = 7;
+    bool isPrime = true;
+    // if block
+    /*Checks if the value of a `number` is less than or equal to
+    1. If yes, then execute line No. 13 to 16. If no, then execute
+    line No. 18*/
+    if (number <= 1) {
+        //Sets the value of `isPrime` to false
+        isPrime = false;
+    }
+    // for block
+    for (int counter = 2; counter <= number / 2; counter++) {
+        // if block
+        if (number % counter == 0) {
+            isPrime = false;
+            // jump to line No. 27
+            break;
+        }
+    }
+    // if-else block
+    /*If isPrime = true then execute line No. 30.
+    If no, then execute line No. 32*/
+    if (isPrime) {
+        cout << "Number is prime";
+    }
+    else {
+        cout << "Number is not prime";
+    }
+
+    //challege 3
+      // Initialize variables
+    int decimal = 10, binary = 0;
+    int remainder, product = 1;
+    // Prints value of decimal
+    cout << "Decimal Number = " << decimal << endl;
+    // while block
+    /*Checks if the value of `decimal` is not equal to `0`.
+    If yes, then execute line No. 17 to 21.
+    If no, then execute line No. 23.
+    */
+    while (decimal != 0) {
+        remainder = decimal % 2;
+        binary = binary + (remainder * product);
+        decimal = decimal / 2;
+        product *= 10;
+    }
+    // while exit
+    cout << "Binary Number = " << binary;
+
+    //challege 4
+    int number = 2002;
+    int remainder = 0, reverse = 0;
+    // To reverse a number store it in temp
+    int temp = number;
+    // while loop
+    while (temp != 0) {
+        // Get the last digit of temp
+        remainder = temp % 10;
+        // Store the remainder after the initially stored value in reverse
+        reverse = reverse * 10 + remainder;
+        // Remove the last digit of temp
+        temp = temp / 10;
+    }
+    // if condition
+    if (number == reverse) {
+        cout << "is palindrome";
+    }
+    else {
+        cout << "not a palindrome";
+    }
     
 }
