@@ -9,6 +9,26 @@ void print_array(int number[], int size) {
     }
     cout << endl;
 }
+void print_array1(int arr[3][3], int row, int column) {
+    // Outer loop 
+    for (int i = 0; i < row; i++) {
+        // Inner loop
+        for (int j = 0; j < column; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+void print_array2(int arr[3][2], int row, int column) {
+    // Outer loop 
+    for (int i = 0; i < row; i++) {
+        // Inner loop
+        for (int j = 0; j < column; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
 
 // modify_array function
 void modify_array(int number[], int size) {
@@ -36,6 +56,73 @@ void left_rotate(int arr[], int size) {
     }
     // Store the value of temp at the last index of an array 
     arr[j] = temp;
+
+}
+// sort_elements function
+void sort_elements(int arr[], int size) {
+    // Outer loop
+    for (int i = 0; i < size; i++) {
+        // Inner loop
+        for (int j = i + 1; j < size; j++) {
+            // If condition
+            if (arr[i] < arr[j]) {
+                // Swap elements
+                // Store the value at index j in temp
+                int temp = arr[j];
+                // Store the value at index i at index j
+                arr[j] = arr[i];
+                // Store the value of temp at index i
+                arr[i] = temp;
+            }
+        }
+    }
+}
+
+int add_diagonal(int arr[3][3], int row, int col) {
+    // Initialize sum
+    int sum = 0;
+    // Outer loop to traverse rows in a 2D array
+    for (int i = 0; i < row; i++) {
+        // Inner loop to traverse values in each row
+        for (int j = 0; j < col; j++) {
+            // Check if row index is equal to column index
+            if (i == j) {
+                // Add element at row index i and column index j in sum
+                sum = sum + arr[i][j];
+            }
+        }
+    }
+    return sum;
+}
+
+
+//challege5
+// multiplication function
+void multiplication(int arr1[][2], int row1, int col1, int arr2[][2], int row2, int col2, int result[][2]) {
+    // Check if col of first array equal to row of second array
+    if (col1 == row2) {
+        // Traverse first array row
+        for (int x = 0; x < row1; x++) {
+            // Traverse second array columns
+            for (int y = 0; y < col2; y++) {
+                // Traverse first array columns and second array rows
+                for (int z = 0; z < col1; z++) {
+                    // Multiplication
+                    result[x][y] = result[x][y] + arr1[x][z] * arr2[z][y];
+                }
+            }
+        }
+    }
+    else {
+        // Traverse first array row
+        for (int x = 0; x < row1; x++) {
+            // Traverse second array columns
+            for (int y = 0; y < col2; y++) {
+                // Fill the elements of array by -1
+                result[x][y] = -1;
+            }
+        }
+    }
 
 }
 
@@ -104,4 +191,44 @@ int main() {
     cout << "Array after left rotation: " << endl;
     // Call print_array function
     print_array(arr, size);
+   
+    const int size1 = 4;
+    
+    int arr[size1] = { 10, 67, 98, 31 };
+
+    cout << "Array before sorting: " << endl;
+    // Call print_array function
+    print_array(arr, size);
+
+    // Call sort_elements function
+    sort_elements(arr, size);
+
+    cout << "Array after sorting: " << endl;
+    // Call print_array function
+    print_array(arr, size);
+
+    // Declare variable
+    int result;
+    // Initialize 2D array
+    int arr1[3][3] = { {1,2,3}, {4,5,6}, {7,8,9} };
+    // Call print_array function
+    print_array1(arr1, 3, 3);
+    // Call add_diagonal function and store your output in result
+    result = add_diagonal(arr1, 3, 3);
+    // Print the value of result
+    cout << "sum = " << result;
+
+
+    //challege 5
+      // Initialize arr1
+    int arr11[3][2] = { {1,2},{3,4},{5,6} };
+    // Initialize arr2
+    int arr21[2][2] = { {10,20},{30,40} };
+    // Initialize result
+    int result1[3][2] = { {0,0},{0,0},{0,0} };
+    // Call function multiplication
+    multiplication(arr11, 3, 2, arr21, 2, 2, result1);
+    // Call function print_array
+    print_array2(result1, 3, 2);
+
 }
