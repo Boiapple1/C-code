@@ -241,9 +241,38 @@ void setRadius(Ball& b, double r) {
     b.radius = r;
 }
 
+//Struct are almost identical to classes. The default access specifier for a 
+//struct is public instead of private
+struct Person {
+    int age;
+    int size;
+    int weight;
+    std::string name;
+};
+
+//A union is a special data type where all members start at the same address.
+//  A union can only hold one type at a time, therefore, we can save memory.
+//
+union Value {
+    int i;
+    double d;
+};
 
 
 int main() {
+    Value v = { 123 };      // now v holds an int
+    std::cout << v.i << '\n';    // write 123
+    v.d = 987.654;          // now v holds a double
+    std::cout << v.d << '\n';
+
+    Ball b(30, "green");
+    cout << "Radius: ";
+    b.printRadius();
+    setRadius(b, 60);
+    cout << "New radius: ";
+    b.printRadius();
+    cout << "Volume: ";
+    b.printVolume();
 
     SomeType someType;
     SomeType someType2(2);
