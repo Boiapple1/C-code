@@ -101,8 +101,35 @@ public:
         cout << "Derived class parameterized constructor" << endl;
     }
 };
+/*
+Base class destructor
+// Base class 
+class Base {    
+    
+    public:  
+    ~Base(){
+      cout << endl << "Base class Destructor!" ;
+    }
+}; 
+  
+  
+// Derived class 
+class Derived : public Base { 
+    public:  
+    
+    ~Derived(){
+      cout << endl << "Derived class Destructor!" ;
+    }
+}; 
+*/
 
 int main() {
+    // creating object of Derived Class 
+    Derived obj;
+    cout << endl;
+    Derived obj1(10.2);
+
+
     Cars car("Chevrolet", "Black", 2010, "Camaro", "9.1 cubic feet");
     car.car_details();
 
