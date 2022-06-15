@@ -29,4 +29,16 @@ int main() {
 
     std::cout << std::endl;
 
+    //using lambda function 
+    std::cout << std::endl;
+
+    std::vector<int> intVec1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    int sum1{ 0 };
+    std::for_each(intVec1.begin(), intVec1.end(), [&sum1](int x) { sum1 += x; });
+
+    std::cout << "sum: " << sum1 << std::endl;
+
+    std::cout << std::endl;
+
 }
