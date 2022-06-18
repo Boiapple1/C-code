@@ -2,8 +2,15 @@
 #include <iostream>
 #include <algorithm>
 #include <utility>
+
+#include <functional>
 //...
 using std::cout;
+using namespace std::placeholders;
+using std::bind;
+using std::function;
+using std::make_pair;
+using std::map;
 //...
 
 class MyData {
@@ -13,7 +20,38 @@ class MyData {
     MyData& operator = (const myData& m) = default; // copy assignment
 };
 
+template <typename T>
+inline void swap(T& a, T& b) {
+    T tmp(std::move(a));
+    a = std::move(b);
+    b = std::move(tmp);
+}
+
 int main() {
+    //std:functions and std::bind
+    //
+    //std::function can store arbitrary callables in variables. It’s a kind of 
+    //polymorphic function wrapper. A callable may be a lambda function, a function
+    //object, or a function. std::function is always necessary and can’t be replaced 
+    //by auto, if you have to specify the type of the callable explicitly.
+    //
+    //std::bind, you can create function objects in a variety of ways:
+    //bind the arguments to an arbitrary position,
+    //change the order of the arguments,
+    //introduce placeholders for arguments,
+    //partially evaluate functions,
+    //
+    map<const char, std::function<double(double, double)>> tab;
+    tab.insert(make_pair('+', [](double a, double b) { return a + b; }));
+    tab.insert(make_pair('-', [](double a, double b) { return a - b; }));
+    tab.insert(make_pair('*', [](double a, double b) { return a * b; }));
+    tab.insert(make_pair('/', [](double a, double b) { return a / b; }));
+
+    std::cout << "3.5 + 4.5\t=  " << tab['+'](3.5, 4.5) << "\n";  //3.5 + 4.5	=  8
+    std::cout << "3.5 - 4.5\t=  " << tab['-'](3.5, 4.5) << "\n";  //3.5 - 4.5	=  -1
+    std::cout << "3.5 * 4.5\t=  " << tab['*'](3.5, 4.5) << "\n";  //3.5 * 4.5	=  15.75
+    std::cout << "3.5 / 4.5\t=  " << tab['/'](3.5, 4.5) << "\n";  //3.5 / 4.5	=  0.777778
+
 
     //utility
     std::vector<int> myBigVec(1000000, 2011);
